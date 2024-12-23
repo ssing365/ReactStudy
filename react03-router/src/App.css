@@ -1,0 +1,15 @@
+/* 
+전체선택자 * : 웹 애플리케이션 전체에 스타일 적용 
+*/
+*{
+  margin: 5px;
+}
+
+/* 
+<NavLink> 컴포넌트를 통해 링크를 클릭하면 active라는 클래스가 자동으로 추가되어 렌더링된다.
+*/
+.active{
+  background-color: aquamarine;
+  font-weight: bold;
+  color: red;
+}
