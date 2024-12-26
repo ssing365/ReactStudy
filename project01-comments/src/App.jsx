@@ -30,6 +30,9 @@ function App() {
   const [editWriter, setEditWriter] = useState('');
   const [editComment, setEditComment] = useState('');
 
+  // 수정 모드 state
+  const [editMode, setEditMode] = useState('offEditMode');
+
   return (
     <>
       <Board />
@@ -37,6 +40,7 @@ function App() {
         myData={myData} setMyData={setMyData} 
         editWriter={editWriter} setEditWriter={setEditWriter}
         editComment={editComment} setEditComment={setEditComment}
+        editMode={editMode} setEditMode={setEditMode}
       />
       <ComWrite 
         myData={myData} setMyData={setMyData} 
@@ -45,7 +49,8 @@ function App() {
       />
       <ComEdit 
         editWriter={editWriter} setEditWriter={setEditWriter}
-        editComment={editComment} setEditComment={setEditComment} 
+        editComment={editComment} setEditComment={setEditComment}
+        setEditMode={setEditMode} 
       />
     </>
   );

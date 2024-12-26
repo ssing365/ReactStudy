@@ -6,6 +6,7 @@ function ComEdit(props){
   const setEditWriter = props.setEditWriter;
   const editComment = props.editComment;
   const setEditComment = props.setEditComment;
+  const setEditMode = props.setEditMode;
 
   return (<>
     <form onSubmit={(event)=>{
@@ -22,6 +23,11 @@ function ComEdit(props){
                 setEditWriter(event.target.value);
               }}
             />
+            <button onClick={()=>{
+              setEditWriter('')
+              setEditComment('')
+              setEditMode('offEditMode')
+            }}>수정취소</button>
           </td>
           <td rowSpan="2">
             <input type="submit" value="댓글수정" id="btn"/>
