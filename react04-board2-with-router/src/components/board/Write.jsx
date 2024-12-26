@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 function Write(props) {
   // 받은 props를 모두 변수에 저장
-  const boardData = props.boardData;
-  const setBoardData = props.setBoardData;
+  const boardData = props.myData;
+  const setBoardData = props.setMyData;
   const nextNo = props.nextNo;
   const setNextNo = props.setNextNo;
-  const navigate = props.navigate;
   const nowDate = props.nowDate;
 
   return (
@@ -40,8 +39,6 @@ function Write(props) {
             setBoardData(copyBoardData);
             // 시퀀스 번호 업데이트
             setNextNo(nextNo+1);
-            // 모든 작업이 완료되면 목록으로 이동
-            navigate("/list");
           }
         }>
           <table id="boardTable">
