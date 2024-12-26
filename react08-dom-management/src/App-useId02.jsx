@@ -1,0 +1,43 @@
+import { useId } from 'react';
+import './App.css';
+
+/**
+ * 각 컴포넌트별로 여러 개의 DOM을 추가해야 하는 경우에는 useID로 하나의 아이디를 생성한 후
+ * -xxx와 같은 형태로 추가적인 이름을 부여해서 사용할 수 있다.
+ */
+
+function App() {
+  return (
+    <>
+      <MyInput1 />
+      <MyInput2 />
+    </>
+  );
+}
+
+function MyInput1(){
+  const id = useId();
+  return(
+    <>
+      <label htmlFor={`${id}-id`}>아이디</label>
+      <input type="text" id={`${id}-id`} name='myId' />
+      <br />
+      <label htmlFor={`${id}-pass`}>패스워드</label>
+      <input type="text" id={`${id}-pass`} name='myPass' />
+    </>
+  )
+}
+
+function MyInput2(){
+  const id = useId();
+  return(
+    <>
+      <label htmlFor={`${id}-name`}>이름</label>
+      <input type="text" id={`${id}-name`} name='myName' />
+      <br />
+      <label htmlFor={`${id}-age`}>나이</label>
+      <input type="text" id={`${id}-age`} name='myAge' />
+    </>
+  )
+}
+export default App;
