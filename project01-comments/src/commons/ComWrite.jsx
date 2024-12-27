@@ -25,8 +25,8 @@ function ComWrite(props){
       // 시퀀스 번호 업데이트
       setNextNo(nextNo+1);
 
-      w='';
-      c='';
+      event.target[0].value='';
+      event.target[2].value='';
     }}>
       <table id="boardTable">
         <tr>

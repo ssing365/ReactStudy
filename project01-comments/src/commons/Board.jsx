@@ -26,9 +26,9 @@ const Board = (props) => {
         </tr>
         <tr>
           <td colSpan="4" align="center">
-            <button type="button" onClick="alert('이 부분은 구현안해요^^*');">수정하기</button>
-            <button type="button" onClick="alert('이 부분은 구현안해요^^*');">삭제하기</button>
-            <button type="button" onClick={"alert('이 부분은 구현안해요^^*')"}>리스트</button>
+            <button type="button" onClick={()=>{}}>수정하기</button>
+            <button type="button" onClick={()=>{}}>삭제하기</button>
+            <button type="button" onClick={()=>{}}>리스트</button>
           </td>
         </tr>
     </table>    

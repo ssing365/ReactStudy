@@ -28,7 +28,9 @@ function ComList(props) {
 
             }}>수정</button>
             <button type="button" onClick={(event)=>{
-              event.preventDefault();
+              if(window.confirm('삭제하시겠습니까?')){
+                props.onDeleteComment(row.no);
+              }
             }}>삭제</button>
           </td>
         </tr>
