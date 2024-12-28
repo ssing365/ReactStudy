@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import ComEdit from "./commons/ComEdit";
+import ComEdit from "../commons/ComEdit";
 
 function ComList(props) {
   let lists = [];
-  const [editMode, setEditMode] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [editNo, setEditNo] = useState(null);
 
   // 중복 수정 버튼 클릭 여부 확인
   const checkEdit = (no) => {
-    if(editMode === true){
+    if(showEdit === true){
       alert("현재 수정모드입니다. 수정 취소를 먼저 눌러주세요.")
-      setEditMode(true)
+      setShowEdit(true)
     }
     else{
       setEditNo(no);
@@ -31,7 +31,7 @@ function ComList(props) {
               {row.date}
               <button type="button" onClick={(event)=>{
                 event.preventDefault();
-                setEditMode(!editMode)
+                setShowEdit(!showEdit)
                 checkEdit(row.no)
               }}>수정</button>
               <button onClick={()=>{
@@ -42,7 +42,9 @@ function ComList(props) {
             </td>
           </tr>
           <tr>
-            <td colSpan="3" className="subject">{row.comment}</td>
+            <td colSpan="3" className="subject" style={{ whiteSpace: "pre-line" }}>
+              {row.comment}
+            </td>
           </tr>
         </table>
     }
@@ -51,7 +53,7 @@ function ComList(props) {
       editNo !== row.no ? null :
         <ComEdit no={row.no} writer={row.writer} comment={row.comment}
           onEditComment ={props.onEditComment}
-          showEdit={editMode} setShowEdit={setEditMode}
+          showEdit={showEdit} setShowEdit={setShowEdit}
           editNo={editNo} setEditNo={setEditNo} />
     }
     </>)
