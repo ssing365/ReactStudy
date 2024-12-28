@@ -4,6 +4,7 @@ import { useState } from "react";
 import Board from "./commons/Board";
 import ComList from "./commons/ComList";
 import ComWrite from "./commons/ComWrite";
+import ComEdit from "./commons/ComEdit";
 
 // 현재 날짜
 const nowDate = () => {
@@ -15,6 +16,9 @@ const nowDate = () => {
 };
 
 function App() {
+  // 시퀀스용 state
+  const [nextNo, setNextNo] = useState(4);
+
   // 댓글 출력용 state
   const [myData, setMyData] = useState([
     {
@@ -37,26 +41,12 @@ function App() {
     },
   ]);
 
-    /**
-   * addCommentProcess,
-   * editCommentProcess,
-   * deleteCommentProcess
-   * 이 세 가지의 함수만 App컴포넌트에서 정의하고, props로 넘기니 깔끔하다.
-   * (이렇게 하려면 코드 작성 전에 계획을 세워야할거같다)
-   * 컴포넌트 마다 기능을 구현하는 함수가 각각 있다면 복잡해지는 것 같다.
-   */
+  // 댓글 수정용 state
+  const [editWriter, setEditWriter] = useState("");
+  const [editComment, setEditComment] = useState("");
 
-  // 시퀀스용 state
-  const [nextNo, setNextNo] = useState(4);
-
-  // 댓글 추가 함수
-  const addCommentProcess = (writer, comment) => {
-    let addComment = {no: nextNo, comment:comment, writer:writer, date:nowDate};
-    let newMyData = [...myData];
-    newMyData.push(addComment);
-    setMyData(newMyData);
-    setNextNo(nextNo+1);
-  }
+  // 수정 모드 state
+  const [editMode, setEditMode] = useState("offEditMode");
 
   // 댓글 수정 함수
   const editCommentProcess = (no, writer, comment) => {
@@ -78,20 +68,35 @@ function App() {
     setMyData(newMyData);
   };
 
-  /**
-   * 수정 관련해서 props가 무지 많았는데 정말 깔끔해졌다.
-   * ComEdit컴포넌트를 List하위로 옮겼다.
-   */
   return (
     <>
       <Board />
       <ComList
         myData={myData}
-        onEditComment = {editCommentProcess}
+        setMyData={setMyData}
+        editWriter={editWriter}
+        setEditWriter={setEditWriter}
+        editComment={editComment}
+        setEditComment={setEditComment}
+        editMode={editMode}
+        setEditMode={setEditMode}
         onDeleteComment = {deleteCommentProcess}
       />
       <ComWrite
-        onWriteComment={addCommentProcess}
+        myData={myData}
+        setMyData={setMyData}
+        nextNo={nextNo}
+        setNextNo={setNextNo}
+        nowDate={nowDate}
+      />
+      <ComEdit
+        editWriter={editWriter}
+        setEditWriter={setEditWriter}
+        editComment={editComment}
+        setEditComment={setEditComment}
+        setEditMode={setEditMode}
+        nextNo={nextNo}
+        editCommentProcess={editCommentProcess}
       />
     </>
   );

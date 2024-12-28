@@ -2,7 +2,11 @@ import React from "react";
 import {useState} from 'react';
 
 function ComEdit(props){
-  const [writer, setWriter]
+  const editWriter = props.editWriter;
+  const setEditWriter = props.setEditWriter;
+  const editComment = props.editComment;
+  const setEditComment = props.setEditComment;
+  const setEditMode = props.setEditMode;
 
   return (<>
     <form onSubmit={(event)=>{
