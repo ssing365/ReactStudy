@@ -3,12 +3,9 @@ import "./App.css";
 
 import Header from "./components/Header";
 import AddPlayerForm from "./components/AddPlayerForm";
-import EditPlayerForm from "./components/EditPlayerForm";
 import Player from "./components/Player";
 
 function App() {
-  const [editIdx, setEditIdx] = useState(null);
-
   const [playerData, setPlayerData] = useState([
     { idx: 1, name: "홍길동", score: 10 },
     { idx: 2, name: "손오공", score: 20 },
@@ -35,8 +32,8 @@ function App() {
   /** 플레이어 수정 */
   const editPlayerProcess = (idx, pName) => {
     console.log("수정", idx, pName);
-    let newPlayersData = playerData.filter((row)=>{
-      if(row.idx === idx){
+    let newPlayersData = playerData.filter((row) => {
+      if (row.idx === idx) {
         row.name = pName;
       }
       return row;
@@ -78,21 +75,17 @@ function App() {
   return (
     <>
       <Header title="My Scoreboard" playersData={playerData} />
-      {playerData.map((playerRow) => (
-        <>
+      {
+        playerData.map((playerRow) => (
           <Player
             key={playerRow.idx}
             playerData={playerRow}
             onChangeScore={scoreChangeProcess}
             onDelete={deletePlayerProcess}
-            editIdx={editIdx}
-            setEditIdx={setEditIdx}
-          />
-          {editIdx !== playerRow.idx ? null : 
-            <EditPlayerForm playerData={playerRow} onEditPlayer={editPlayerProcess} />
-          }
-        </>
-      ))}
+            onEditPlayer={editPlayerProcess} />
+
+        ))
+      }
       {/* 플레이어를 추가하는 함수를 props로 전달 */}
       <AddPlayerForm onAddPlayer={addPlayerProcess}></AddPlayerForm>
     </>
