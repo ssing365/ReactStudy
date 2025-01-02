@@ -16,15 +16,18 @@ function App() {
         setMyData(json);
         console.log(json)
       });
+    return ()=>{
+      console.log('useEffect()실행')
+    }
   }, []);
 
   const trTag = [];
   myData.forEach((data) => {
     trTag.push(
       <>
-        <tr key={2}>
+        <tr key={data.id}>
           <td>
-            <img src={data.thumbnailUrl} alt="thumbnail" />
+            <img src={data.thumbnailUrl} alt={data.title} />
           </td>
           <td>
             <a
@@ -77,10 +80,11 @@ function App() {
             </li>
             <li>
               <strong>URL:</strong>{" "}
-              <a href="https://via.placeholder.com/150">{url}</a>
+              <a href={url} target="blank">{url}</a>
             </li>
             <li>
-              <strong>Thumbnail URL: </strong>{thumbnailUrl}{" "}
+              <strong>Thumbnail URL: </strong>
+              <a href={thumbnailUrl} target="blank" >{thumbnailUrl}</a> {" "}
             </li>
           </ul>
         </div>
