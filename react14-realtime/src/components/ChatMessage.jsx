@@ -52,6 +52,7 @@ function ChatMessage() {
     // 리스너 생성
     onValue(dbRef, (snapshot) => {
       let showDiv = [];
+      console.log('snapshot : ', snapshot)
       snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
