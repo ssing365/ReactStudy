@@ -1,7 +1,7 @@
 // Firebase 서비스에 연결하기 위한 Import
 import { initializeApp } from "firebase/app";
 // 파이어스토어 DB를 사용하기 위한 Import
-import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 // 구글 애널리틱스
 // import { getAnalytics } from "firebase/analytics";
 
@@ -30,8 +30,8 @@ const firebaseConfig = {
 // Initialize Firebase (Firebase에 연결한 후 앱 초기화)
 const app = initializeApp(firebaseConfig);
 // firestore 사용을 위한 객체 생성
-const firestore = getFirestore(app);
-export {firestore};
+const storage = getStorage(app, 'gs://myreactapp-47671.firebasestorage.app');
+export {storage};
 
 // 구글 애널리틱스
 // const analytics = getAnalytics(app);
