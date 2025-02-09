@@ -78,13 +78,14 @@ function ChatMessage() {
                 <p className="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
                   {childData.message}
                 </p>
+                <p>{childData.date}</p>
               </div>
               <img
                 src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
                 alt="avatar 1"
                 style={{ width: "50px", height: "50px" }}
               ></img>
-              <span>{childData.date}</span>
+
             </div>
           );
         }
@@ -105,8 +106,8 @@ function ChatMessage() {
                 >
                   {childData.message}
                 </p>
+                <p>{childData.date}</p>
               </div>
-              <span>{childData.date}</span>
             </div>
           );
         }
